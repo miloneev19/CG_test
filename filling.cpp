@@ -71,7 +71,7 @@ void setPixel(int x,int y, float f[3])
 
 void getPixel(int x,int y, float pixels[3])
 {
-    glReadPixel(x,y,1,1,GLUT_RGB,GL_FLOAT,pixels);
+    glReadPixels(x,y,1,1,GLUT_RGB,GL_FLOAT,pixels);
 }
 
 void floodfill(int x, int y, float color[3])
@@ -99,7 +99,7 @@ void boundaryfill(int x, int y, float newcolor1[3])
 
     if(color[0] != boundcolor[0] || color[0] != boundcolor[0] || color[0] != boundcolor[0]   )
     {
-        if(color[0] = newcolor1[0] || color[1] = newcolor1[1] || color[1] = newcolor1[1])
+        if(color[0] == newcolor1[0] || color[1] == newcolor1[1] || color[1] == newcolor1[1])
         {
             setPixel(x,y,newcolor1);
             boundaryfill(x+1,y,newcolor1);
@@ -125,16 +125,16 @@ void mouse(int button, int state, int x, int y)
 
     y=500-y;
 
-    if(button = GLUT_LEFT_BUTTON && state= GLUT_DOWN)
+    if(button == GLUT_LEFT_BUTTON && state== GLUT_DOWN)
     {
          floodfill(x,y,newcolor);
     }
-    if(button =GLUT_RIGHT_BUTTON && state = GLUT_DOWN)
+    if(button ==GLUT_RIGHT_BUTTON && state == GLUT_DOWN)
     {
         boundaryfill(x,y,newcolor1);
     }
 }
-void main(int argc , char** argv)
+int main(int argc , char** argv)
 {
     glutInit(&argc,argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
@@ -147,4 +147,5 @@ void main(int argc , char** argv)
     glutDisplayFunc(Draw);
     glutMouseFunc(mouse);
     glutMainLoop();
+    return 0;
 }
