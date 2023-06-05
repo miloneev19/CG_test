@@ -92,7 +92,7 @@ void floodfill(int x, int y, float color[3])
 
 }
 
-void boundaryfill(int x, int y, float newcolor1[3])
+/*void boundaryfill(int x, int y, float newcolor1[3])
 {
     float color[3];
     getPixel(x,y,color);
@@ -109,7 +109,7 @@ void boundaryfill(int x, int y, float newcolor1[3])
         }
     }
     glFlush();
-}
+}*/
 void Draw()
 {
     glClear(GL_COLOR_BUFFER_BIT);
@@ -122,17 +122,17 @@ void Draw()
 
 void mouse(int button, int state, int x, int y)
 {
-
-    y=500-y;
+    int x1= x;
+    int y1=500-y;
 
     if(button == GLUT_LEFT_BUTTON && state== GLUT_DOWN)
     {
-         floodfill(x,y,newcolor);
+         floodfill(x1,y1,newcolor);
     }
-    if(button ==GLUT_RIGHT_BUTTON && state == GLUT_DOWN)
+    /*if(button ==GLUT_RIGHT_BUTTON && state == GLUT_DOWN)
     {
         boundaryfill(x,y,newcolor1);
-    }
+    }*/
 }
 int main(int argc , char** argv)
 {
